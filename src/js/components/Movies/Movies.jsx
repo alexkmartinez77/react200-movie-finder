@@ -1,4 +1,5 @@
 import React from 'react';
+import Movie from './Movie';
 
 export default class Movies extends React.Component {
 
@@ -8,11 +9,8 @@ export default class Movies extends React.Component {
       <div>
         {
           movies.map((movie, index) => {
-            const { Title, Poster, Year} = movie;
             return(
-              <div key={index}>
-                { Title } { Poster } { Year }
-              </div>
+              <Movie key={index} movieData={movie}/>
             )
           })
         }
