@@ -27,9 +27,10 @@ export default class SearchBar extends React.Component {
           <input
             type='text'
             className='form-control'
+            value={this.props.movie}
             onChange={(e) => this.handleMovie(e)}
           />
-          <button type="button" className="btn btn-outline-secondary" onClick={() => this.handleMovieData()}>Go!</button>
+          <button type='button' className='btn btn-outline-secondary' onClick={() => this.handleMovieData()}>Go!</button>
         </div>
       </div>
     </form>

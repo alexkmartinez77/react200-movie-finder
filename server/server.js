@@ -16,6 +16,7 @@ app.get('/movieInfo/:inputValue', (req, res) => {
       method: 'get'
     })
     .then((response) => {
+      console.log(response);
       res.send(response.data.Search);
     });
   });
