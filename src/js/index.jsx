@@ -4,10 +4,13 @@ import { Provider } from 'react-redux';
 import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
 import promiseMiddleware from 'redux-promise-middleware';
 import App from './app';
+import SearchReducer from '../js/components/SearchBar/searchReducer';
 
 /*Need promiseMiddleware for api call to OMDB API*/
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-const rootReducer = combineReducers({});
+const rootReducer = combineReducers({
+	search: SearchReducer,
+});
 const store = createStore(rootReducer, composeEnhancers(applyMiddleware(promiseMiddleware)));
 
 render(

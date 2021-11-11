@@ -1,4 +1,6 @@
 import React from 'react';
+import Header from '../components/Header/Header';
+import SearchBar from '../components/SearchBar';
 
 class MovieSearchContainer extends React.Component {
 	constructor(props) {
@@ -8,7 +10,8 @@ class MovieSearchContainer extends React.Component {
 	render() {
 		return (
 			<div>
-				<h1>Movie Search Container</h1>
+				<Header />
+				<SearchBar />
 			</div>
 		)
 	}
