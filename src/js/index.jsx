@@ -1,20 +1,18 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { combineReducers, createStore, applyMiddleware, compose } from 'redux';
+import promiseMiddleware from 'redux-promise-middleware';
 import App from './app';
 
-/* eslint-disable no-underscore-dangle */
-const store = createStore(
-  reducers,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
-/* eslint-enable */
-
+/*Need promiseMiddleware for api call to OMDB API*/
+const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+const rootReducer = combineReducers({});
+const store = createStore(rootReducer, composeEnhancers(applyMiddleware(promiseMiddleware)));
 
 render(
-  <Provider store={ store }>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+	<Provider store={ store }>
+		<App />
+	</Provider>,
+	document.getElementById('root')
 );

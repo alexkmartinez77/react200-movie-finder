@@ -4,8 +4,8 @@
   "description": "A new React project.",
   "main": "server/index.js",
   "scripts": {
-    "build": "npm run less && webpack",
-    "start": "npm run build && node server/index.js",
+    "build": "npm run less && webpack -w --mode development",
+    "start": "node server/index.js",
     "less": "lessc src/css/style.less dist/css/style.css",
     "lint": "eslint .",
     "test": "npm run build && mocha test/setup.js test/*.spec.js --exit"
@@ -32,6 +32,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-redux": "^7.2.6",
+    "react-router": "^6.0.2",
     "react-router-dom": "^4.3.1",
     "redux": "^4.1.2",
     "redux-promise-middleware": "^6.1.2",
