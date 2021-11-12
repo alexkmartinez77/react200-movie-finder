@@ -1,6 +1,15 @@
 import React from 'react';
 
 export default class Movies extends React.Component {
+  constructor(props){
+    super(props);
+    this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick(){
+    const id = this.props.movieData.imdbID;
+    console.log(id);
+  }
 
   render() {
     const { Title, Poster, Year, Plot} = this.props.movieData;
@@ -15,7 +24,7 @@ export default class Movies extends React.Component {
             <h1 className='display-6 text-center'>{ Year }</h1>
             <hr></hr>
             <div>{ Plot }</div>
-            <div className='float-right m-3'><button className='btn btn-info'>More Information</button></div>
+            <div className='float-right m-3'><button type='button' className='btn btn-info' onClick={() => this.handleClick()}>More Information</button></div>
           </div>
         </div>
       </div>

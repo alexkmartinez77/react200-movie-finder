@@ -10,7 +10,7 @@ export default class Movies extends React.Component {
         {
           movies.map((movie, index) => {
             return(
-              <Movie key={index} movieData={movie}/>
+              <Movie key={index} movieData={movie} index={index}/>
             )
           })
         }
