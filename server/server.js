@@ -18,18 +18,18 @@ app.get('/movieInfo/:inputValue', async(req, res) => {
       method: 'get'
     })
     .then((response) => {
-      let moviesArray = response.data.Search
+      /*let moviesArray = response.data.Search
 
-      const movies = moviesArray.map( async movie => {
+      const movies = Promise.all(moviesArray.map( async movie => {
         const movieData = await axios({
             url: `http://omdbapi.com/?i=${movie.imdbID}&apikey=${process.env.OMDB_API_KEY}`,
             method: 'get'
           })
 
         return movieData;
-      })
-      const movieData = Promise.all(movies);
-      console.log(movieData);
+      }))
+      console.log(movies);*/
+      res.send(response.data.Search);
       })
     });
 
