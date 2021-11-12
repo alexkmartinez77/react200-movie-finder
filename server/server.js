@@ -11,30 +11,22 @@ app.use(express.static('dist'));
 app.use(express.static('public'));
 
 app.get('/movieInfo/:inputValue', async(req, res) => {
-    var promises = [];
-
     axios({
       url: `http://omdbapi.com/?s=${req.params.inputValue}&apikey=${process.env.OMDB_API_KEY}`,
       method: 'get'
     })
     .then((response) => {
-      ////////////////////////////////////////////////////////////////////////////////
       let moviesArray = response.data.Search
-
       const movies = Promise.all(moviesArray.map( async movie => {
         const movieData = await axios({
             url: `http://omdbapi.com/?i=${movie.imdbID}&apikey=${process.env.OMDB_API_KEY}`,
             method: 'get'
           })
-
         return movieData.data;
       }))
-
       return movies;
-      ///////////////////////////////////////////////////////////////////////////////////
-      //res.send(response.data.Search);
       })
-      .then(response => res.send(response));
+    .then(response => res.send(response));
     });
 
 app.get('/movie/:id', (req, res) => {
