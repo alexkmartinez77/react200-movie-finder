@@ -18,7 +18,8 @@ app.get('/movieInfo/:inputValue', async(req, res) => {
       method: 'get'
     })
     .then((response) => {
-      /*let moviesArray = response.data.Search
+      ////////////////////////////////////////////////////////////////////////////////
+      let moviesArray = response.data.Search
 
       const movies = Promise.all(moviesArray.map( async movie => {
         const movieData = await axios({
@@ -26,11 +27,14 @@ app.get('/movieInfo/:inputValue', async(req, res) => {
             method: 'get'
           })
 
-        return movieData;
+        return movieData.data;
       }))
-      console.log(movies);*/
-      res.send(response.data.Search);
+
+      return movies;
+      ///////////////////////////////////////////////////////////////////////////////////
+      //res.send(response.data.Search);
       })
+      .then(response => res.send(response));
     });
 
 app.get('/movie/:id', (req, res) => {
