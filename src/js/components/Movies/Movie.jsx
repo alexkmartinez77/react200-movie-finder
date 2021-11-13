@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link }  from 'react-router-dom';
+import getMovieDataByID from './searchIDActions';
 
 export default class Movies extends React.Component {
   constructor(props){
@@ -6,13 +8,11 @@ export default class Movies extends React.Component {
     this.handleClick = this.handleClick.bind(this);
   }
 
-  handleClick(){
-    const id = this.props.movieData.imdbID;
-    console.log(id);
+  handleClick(ID){
+    console.log(ID);
   }
-
   render() {
-    const { Title, Poster, Year, Plot} = this.props.movieData;
+    const { Title, Poster, Year, Plot, imdbID} = this.props.movieData;
     return (
       <div className='card my-3'>
         <div className='row'>
@@ -24,7 +24,7 @@ export default class Movies extends React.Component {
             <h1 className='display-6 text-center'>{ Year }</h1>
             <hr></hr>
             <div>{ Plot }</div>
-            <div className='float-right m-3'><button type='button' className='btn btn-info' onClick={() => this.handleClick()}>More Information</button></div>
+            <div className='float-right m-3'><Link to={`/movie/${imdbID}`}><button type='button' className='btn btn-info' onClick={() => this.handleClick(imdbID)}>More Information</button></Link></div>
           </div>
         </div>
       </div>
