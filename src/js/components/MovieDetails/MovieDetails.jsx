@@ -17,7 +17,7 @@ export default class MovieDetails extends React.Component {
   }
 
   render() {
-    const { Title, Plot, Year, Runtime, Rated, Poster, Awards, Metascore, imdbRating, BoxOffice, Actors } = this.props.movieDetails
+    const { Title, Plot, Year, Runtime, Rated, Poster, Awards, Metascore, imdbRating, BoxOffice, Actors, Director } = this.props.movieDetails
   return (
     <div className='row'>
     <div className='col-sm-6 col-md-6 col-lg-4 text-center p-3'>
@@ -48,12 +48,19 @@ export default class MovieDetails extends React.Component {
       <div className='row mb-2'>
         <div className='col'>
           <span>
+          <span class="material-icons align-bottom mr-1">video_camera_front</span>
+            <span className="font-weight-bold mr-1">Director:</span> { Director }
+          </span>
+        </div>
+      </div>
+      <div className='row mb-2'>
+        <div className='col'>
+          <span>
           <span class="material-icons align-bottom mr-1">people_alt</span>
             <span className="font-weight-bold mr-1">Actors:</span> { Actors }
           </span>
         </div>
       </div>
-
       <div className='row mb-2'>
         <div className='col'>
           <span>
