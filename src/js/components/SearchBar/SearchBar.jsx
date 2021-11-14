@@ -28,14 +28,14 @@ export default class SearchBar extends React.Component {
             <span className="material-icons glyphicon">search</span>
             <input
               type='text'
-              className='form-control'
+              className='form-control playFont'
               value={this.props.movie}
               placeholder='Enter Movie Name (e.g. Harry Potter)'
               onChange={(e) => this.handleMovie(e)}
             />
           </div>
-          <div className="text-center mt-2">
-            <button type='button' className='btn btn-info' onClick={() => this.handleMovieData()}>Find Movie!</button>
+          <div className="text-center mt-3">
+            <button type='button' className='btn btn-info playFont' onClick={() => this.handleMovieData()}>Find Movie!</button>
           </div>
 
         </div>
