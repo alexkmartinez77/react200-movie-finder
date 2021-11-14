@@ -24,7 +24,12 @@ export default class Movies extends React.Component {
             <h1 className='display-6 text-center'>{ Year }</h1>
             <hr></hr>
             <div>{ Plot }</div>
-            <div className='float-right m-3'><Link to={`/movie/${imdbID}`}><button type='button' className='btn btn-info' onClick={() => this.handleClick(imdbID)}>More Information</button></Link></div>
+            <div className='float-right m-3'>
+              <Link to={`/movie/${imdbID}`}>
+                <button type='button' className='btn btn-info' onClick={() => this.handleClick(imdbID)}>
+                  <span class="material-icons align-top">zoom_in</span> More Information
+                </button>
+              </Link></div>
           </div>
         </div>
       </div>
