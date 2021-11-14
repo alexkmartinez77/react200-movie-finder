@@ -23,17 +23,21 @@ export default class SearchBar extends React.Component {
   return (
     <form>
       <div className='row mb-3 mt-1'>
-        <div className="col-md-12 input-group">
-          <span className="input-group-text" id="basic-addon1">
-            <span className="material-icons">search</span>
-          </span>
-          <input
-            type='text'
-            className='form-control'
-            value={this.props.movie}
-            onChange={(e) => this.handleMovie(e)}
-          />
-          <button type='button' className='btn btn-outline-secondary' onClick={() => this.handleMovieData()}>Go!</button>
+        <div className="col-md-12">
+          <div className="row inner-addon left-addon">
+            <span className="material-icons glyphicon">search</span>
+            <input
+              type='text'
+              className='form-control'
+              value={this.props.movie}
+              placeholder='Enter Movie Name (e.g. Harry Potter)'
+              onChange={(e) => this.handleMovie(e)}
+            />
+          </div>
+          <div className="text-center mt-2">
+            <button type='button' className='btn btn-info' onClick={() => this.handleMovieData()}>Find Movie!</button>
+          </div>
+
         </div>
       </div>
     </form>
