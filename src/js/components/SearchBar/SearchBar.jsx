@@ -24,6 +24,9 @@ export default class SearchBar extends React.Component {
     <form>
       <div className='row mb-3 mt-1'>
         <div className="col-md-12 input-group">
+          <span className="input-group-text" id="basic-addon1">
+            <span class="material-icons">search</span>
+          </span>
           <input
             type='text'
             className='form-control'
