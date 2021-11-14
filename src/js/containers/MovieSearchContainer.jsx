@@ -4,9 +4,6 @@ import SearchBar from '../components/SearchBar';
 import Movies from '../components/Movies';
 
 class MovieSearchContainer extends React.Component {
-	constructor(props) {
-		super(props);
-	}
 
 	render() {
 		return (
