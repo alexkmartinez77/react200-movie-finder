@@ -17,11 +17,11 @@ export default class MovieDetails extends React.Component {
   }
 
   render() {
-    const { Title, Plot, Year, Runtime, Rated } = this.props.movieDetails
+    const { Title, Plot, Year, Runtime, Rated, Poster, Awards, Metascore, imdbRating, BoxOffice, Actors, Director } = this.props.movieDetails
   return (
     <div className='row'>
     <div className='col-sm-6 col-md-6 col-lg-4 text-center p-3'>
-      <img style={{height: '400px', width: '333px', backgroundColor:'white'}}></img>
+      <img src={ Poster }></img>
     </div>
     <div className='col-sm-6 col-md-6 col-lg-8'>
       <h1 className='display-6 text-center'>{ Title }</h1>
@@ -48,15 +48,32 @@ export default class MovieDetails extends React.Component {
       <div className='row mb-2'>
         <div className='col'>
           <span>
-            <span className="material-icons align-bottom mr-1">emoji_events</span>Nominated for 7 oscars. Another 19 wins. & 30 nominations
+          <span class="material-icons align-bottom mr-1">video_camera_front</span>
+            <span className="font-weight-bold mr-1">Director:</span> { Director }
+          </span>
+        </div>
+      </div>
+      <div className='row mb-2'>
+        <div className='col'>
+          <span>
+          <span class="material-icons align-bottom mr-1">people_alt</span>
+            <span className="font-weight-bold mr-1">Actors:</span> { Actors }
+          </span>
+        </div>
+      </div>
+      <div className='row mb-2'>
+        <div className='col'>
+          <span>
+            <span className="material-icons align-bottom mr-1">emoji_events</span>
+              { Awards }
             </span>
         </div>
       </div>
       <div className='row mb-2'>
         <div className='col'>
           <span>
-            <span className="material-icons align-bottom mr-1">thumbs_up_down</span>
-              <span className="font-weight-bold mr-1">Metascore:</span> 80/100
+            <span className="material-icons align-bottom mr-1">percent</span>
+              <span className="font-weight-bold mr-1">Metascore:</span> { Metascore }
           </span>
         </div>
       </div>
@@ -64,7 +81,15 @@ export default class MovieDetails extends React.Component {
         <div className='col'>
           <span>
             <span className="material-icons align-bottom mr-1">thumbs_up_down</span>
-              <span className="font-weight-bold mr-1">IMDB:</span> 9.3
+              <span className="font-weight-bold mr-1">IMDB:</span> { imdbRating }
+          </span>
+        </div>
+      </div>
+      <div className='row mb-2'>
+        <div className='col'>
+          <span>
+          <span class="material-icons align-bottom mr-1">paid</span>
+            <span className="font-weight-bold mr-1">Box Office:</span> { BoxOffice }
           </span>
         </div>
       </div>
