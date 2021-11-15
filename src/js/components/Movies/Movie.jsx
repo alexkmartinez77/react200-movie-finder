@@ -13,9 +13,9 @@ export default class Movies extends React.Component {
           <div className="container" style={{width: '350px'}}>
             <h1 className='display-6 text-center playFont'>{ Title }</h1>
             <div className='row'>
-              <div className='col text-center font-weight-bold playFont'>Released</div>
-              <div className='col text-center font-weight-bold playFont'>Duration</div>
-              <div className='col text-center font-weight-bold playFont'>Rated</div>
+              <div className='col text-center font-weight-bold playFont lightSeaGreen'>Released</div>
+              <div className='col text-center font-weight-bold playFont lightSeaGreen'>Duration</div>
+              <div className='col text-center font-weight-bold playFont lightSeaGreen'>Rated</div>
             </div>
             <div className='row mb-2'>
               <div className='col text-center'><span className="material-icons align-bottom mr-1">event</span><span className="slateGrey">{ Year }</span></div>
@@ -37,7 +37,8 @@ export default class Movies extends React.Component {
                 <button type='button' className='btn btn-info playFont'>
                   <span className="material-icons align-top">zoom_in</span> More Information
                 </button>
-              </Link></div>
+              </Link>
+            </div>  
           </div>
         </div>
       </div>
