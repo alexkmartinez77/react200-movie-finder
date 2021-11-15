@@ -14,14 +14,15 @@ export default class SearchBar extends React.Component {
     dispatch(updateMovie(movie));
   }
 
-  handleMovieData(){
+  handleMovieData(e){
+    e.preventDefault();
     const { dispatch } = this.props;
     dispatch(getMovieData(this.props.movie));
   }
 
   render() {
   return (
-    <form>
+    <form onSubmit={this.handleMovieData}>
       <div className='row mb-3 mt-1'>
         <div className="col-md-12">
           <div className="row inner-addon left-addon">
@@ -32,10 +33,12 @@ export default class SearchBar extends React.Component {
               value={this.props.movie}
               placeholder='Enter Movie Name (e.g. Harry Potter)'
               onChange={(e) => this.handleMovie(e)}
+              required
+              maxLength='70'
             />
           </div>
           <div className="text-center mt-3">
-            <button type='button' className='btn btn-info playFont' onClick={() => this.handleMovieData()}>Find Movie!</button>
+            <button type='submit' className='btn btn-info playFont'>Find Movie!</button>
           </div>
         </div>
       </div>
