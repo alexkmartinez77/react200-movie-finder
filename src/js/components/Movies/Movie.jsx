@@ -7,10 +7,10 @@ export default class Movies extends React.Component {
     return (
       <div className='card my-3'>
         <div className='row'>
-          <div className='col-sm-6 col-md-6 col-lg-4 text-center p-3'>
+          <div style={{width: '300px'}}className='text-center'>
             <img src={ Poster }></img>
           </div>
-          <div className='col-sm-6 col-md-6 col-lg-8'>
+          <div className="container" style={{width: '350px'}}>
             <h1 className='display-6 text-center playFont'>{ Title }</h1>
             <div className='row'>
               <div className='col text-center font-weight-bold playFont'>Released</div>

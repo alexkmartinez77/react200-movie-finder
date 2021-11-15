@@ -48,7 +48,7 @@ export default class MovieDetails extends React.Component {
       <div className='row mb-2'>
         <div className='col'>
           <span>
-          <span class="material-icons align-bottom mr-1">video_camera_front</span>
+          <span className="material-icons align-bottom mr-1">video_camera_front</span>
             <span className="font-weight-bold mr-1">Director:</span> { Director }
           </span>
         </div>
@@ -56,7 +56,7 @@ export default class MovieDetails extends React.Component {
       <div className='row mb-2'>
         <div className='col'>
           <span>
-          <span class="material-icons align-bottom mr-1">people_alt</span>
+          <span className="material-icons align-bottom mr-1">people_alt</span>
             <span className="font-weight-bold mr-1">Actors:</span> { Actors }
           </span>
         </div>
@@ -88,7 +88,7 @@ export default class MovieDetails extends React.Component {
       <div className='row mb-2'>
         <div className='col'>
           <span>
-          <span class="material-icons align-bottom mr-1">paid</span>
+          <span className="material-icons align-bottom mr-1">paid</span>
             <span className="font-weight-bold mr-1">Box Office:</span> { BoxOffice }
           </span>
         </div>
