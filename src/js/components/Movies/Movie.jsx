@@ -7,7 +7,7 @@ export default class Movies extends React.Component {
     return (
       <div className='card my-3'>
         <div className='row'>
-          <div style={{width: '300px'}}className='text-center'>
+          <div style={{width: '300px'}} className='text-center'>
             <img src={ Poster }></img>
           </div>
           <div className="container" style={{width: '350px'}}>
@@ -27,7 +27,7 @@ export default class Movies extends React.Component {
               <div className='col'>
                 <span>
                   <span className="material-icons align-bottom mr-1">auto_stories</span>
-                  <span className="font-weight-bold mr-1">Plot:</span>
+                  <span className="font-weight-bold mr-1 lightSeaGreen">Plot:</span>
                   <span className="slateGrey">{ Plot }</span>
                 </span>
               </div>
