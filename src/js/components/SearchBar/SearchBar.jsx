@@ -37,7 +37,6 @@ export default class SearchBar extends React.Component {
           <div className="text-center mt-3">
             <button type='button' className='btn btn-info playFont' onClick={() => this.handleMovieData()}>Find Movie!</button>
           </div>
-
         </div>
       </div>
     </form>
