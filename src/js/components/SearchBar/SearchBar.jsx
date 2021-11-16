@@ -35,10 +35,11 @@ export default class SearchBar extends React.Component {
               onChange={(e) => this.handleMovie(e)}
               required
               maxLength='70'
+              name='movieSearch'
             />
           </div>
           <div className="text-center mt-3">
-            <button type='submit' className='btn btn-info playFont'>Find Movie!</button>
+            <button name='findMovie' id='findMovie' type='submit' className='btn btn-info playFont'>Find Movie!</button>
           </div>
         </div>
       </div>

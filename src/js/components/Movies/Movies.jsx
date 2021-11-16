@@ -6,7 +6,7 @@ export default class Movies extends React.Component {
   render() {
     const movies = this.props.movies;
     return (
-      <div>
+      <div id='movies' name='test'>
         {
           movies.map((movie, index) => {
             return(
