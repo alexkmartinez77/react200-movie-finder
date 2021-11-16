@@ -45,7 +45,7 @@ app.get('/movie/:id', (req, res) => {
 
 ////////////////////////////////////////////// TESTS //////////////////////////////////////////////
 
-describe('express', function() {
+describe('Express', function() {
 
   this.timeout(30000);
 	let httpServer = null;
@@ -117,4 +117,63 @@ describe('express', function() {
     const movieArray = await axios.get(`${url}/movie/${movieID}`);
     expect(movieArray.data.Title).to.include('Top Gun');
   })
+
+});
+
+describe('Unit Tests', function() {
+
+  this.timeout(30000);
+	let httpServer = null;
+	let pageObject = null;
+
+	before((done) => {
+		httpServer = app.listen(8888);
+		done();
+	});
+
+	beforeEach(() => {
+		pageObject = nightmare.goto(url);
+	});
+
+	after((done) => {
+		httpServer.close();
+		done();
+	});
+
+  it('call to proxy server /movieInfo/:inputValue returns an array', async () => {
+    const movie = 'Top Gun';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data).to.be.an('array');
+  })
+
+  it('returned array should have 10 objects representing 10 movies', async () => {
+    const movie = 'Top Gun';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data).to.have.lengthOf(10);
+  })
+
+  it('returned objects should have required key/value pairs', async () => {
+    const movie = 'Top Gun';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data[0]).to.have.property('Title');
+    expect(movieArray.data[0]).to.have.property('Poster');
+    expect(movieArray.data[0]).to.have.property('Year');
+    expect(movieArray.data[0]).to.have.property('Plot');
+    expect(movieArray.data[0]).to.have.property('imdbID');
+    expect(movieArray.data[0]).to.have.property('Runtime');
+    expect(movieArray.data[0]).to.have.property('Rated');
+  })
+
+  it('"Top Gun" search returns results with titles including Top Gun', async () => {
+    const movie = 'Top Gun';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data[0].Title).to.include('Top Gun');
+  })
+
+  it('"Harry Potter" search returns results with titles including Top Gun', async () => {
+    const movie = 'Harry Potter';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data[0].Title).to.include('Harry Potter');
+  })
+
 });
