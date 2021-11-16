@@ -28,7 +28,7 @@ export default class MovieDetails extends React.Component {
         </div>
       </div>
       <div className='col-6 my-5'>
-        <div className='container' style={{width: '350px', backgroundColor: 'white'}}>
+        <div className='container' style={{width: '350px', backgroundColor: 'white', padding: '20px'}}>
           <h1 className='display-6 text-center playFont'>{ Title }</h1>
           <hr></hr>
           <div className='row'>

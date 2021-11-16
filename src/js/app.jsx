@@ -7,7 +7,7 @@ export default class App extends React.Component {
   render() {
     return (
       <Router>
-        <div className='container'> 
+        <div className='container' style={{width: '700px'}}> 
           <Route exact path='/' component={ MovieSearchContainer } />
           <Route path='/movie/:id' component={ MovieDetailsContainer } />
         </div>
