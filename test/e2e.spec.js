@@ -44,6 +44,7 @@ app.get('/movie/:id', (req, res) => {
 });
 
 ////////////////////////////////////////////// TESTS //////////////////////////////////////////////
+
 describe('express', function() {
 
   this.timeout(30000);
@@ -116,40 +117,4 @@ describe('express', function() {
     const movieArray = await axios.get(`${url}/movie/${movieID}`);
     expect(movieArray.data.Title).to.include('Top Gun');
   })
-
-  it('should have the correct page title', () =>
-      pageObject
-      .wait()
-      .evaluate(() => document.querySelector('title').innerText)
-      .then(text => {
-        expect(text).to.equal('Movie Finder');
-      })
-  ).timeout(30000);
-
-  it('should have an movieSearch input', () =>
-      pageObject
-      .wait()
-      .evaluate(() => document.querySelector('input').name)
-      .then(name => {
-        expect(name).to.equal('movieSearch');
-      })
-  ).timeout(30000);
-
-  it('should have a submit button', () =>
-      pageObject
-      .wait()
-      .evaluate(() => document.querySelector('button').type)
-      .then(type => {
-        expect(type).to.equal('submit');
-      })
-  ).timeout(30000);
-
-  it('button name should be findMovie', () =>
-      pageObject
-      .wait()
-      .evaluate(() => document.querySelector('button').name)
-      .then(name => {
-        expect(name).to.equal('findMovie');
-      })
-  ).timeout(30000);
 });
