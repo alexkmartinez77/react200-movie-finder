@@ -48,7 +48,7 @@ app.get('/movie/:id', (req, res) => {
 });
 
 ////////////////////////////////////////////// TESTS //////////////////////////////////////////////
-describe('express', async function() {
+describe('express', function() {
 
   this.timeout(30000);
 
@@ -57,7 +57,9 @@ describe('express', async function() {
   });
 
   it('returns the correct status code', () => axios.get(url)
-  .then(response => expect(response.status === 200)));
+  .then(response => {
+    expect(response.status === 200);
+  }));
 
   it('call to proxy server /movieInfo/:inputValue returns an array', async () => {
     const movie = 'Top Gun';
@@ -146,5 +148,4 @@ describe('express', async function() {
         expect(name).to.equal('findMovie');
       })
   );
-
 });
