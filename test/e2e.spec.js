@@ -7,15 +7,12 @@ const axios = require('axios');
 import 'regenerator-runtime/runtime'
 require('dotenv').config();
 
-let nightmare;
-
 const app = express();
+const url = 'http://localhost:8888';
+const nightmare = new Nightmare();
+
 app.use(express.static(path.join(__dirname, '/../public')));
 app.use(express.static(path.join(__dirname, '/../dist')));
-
-app.listen(8888);
-
-const url = 'http://localhost:8888';
 
 app.get('/movieInfo/:inputValue', async(req, res) => {
   axios({
@@ -50,10 +47,22 @@ app.get('/movie/:id', (req, res) => {
 describe('express', function() {
 
   this.timeout(30000);
+	let httpServer = null;
+	let pageObject = null;
 
-  beforeEach(() => {
-    nightmare = new Nightmare();
-  });
+	before((done) => {
+		httpServer = app.listen(8888);
+		done();
+	});
+
+	beforeEach(() => {
+		pageObject = nightmare.goto(url);
+	});
+
+	after((done) => {
+		httpServer.close();
+		done();
+	});
 
   it('returns the correct status code', () => axios.get(url)
   .then(response => {
@@ -109,45 +118,37 @@ describe('express', function() {
   })
 
   it('should have the correct page title', () =>
-    nightmare
-      .goto(url)
+      pageObject
       .wait()
       .evaluate(() => document.querySelector('title').innerText)
-      .end()
-      .then((text) => {
+      .then(text => {
         expect(text).to.equal('Movie Finder');
       })
   ).timeout(6500);
 
   it('should have an movieSearch input', () =>
-    nightmare
-      .goto(url)
+      pageObject
       .wait()
       .evaluate(() => document.querySelector('input').name)
-      .end()
-      .then((name) => {
+      .then(name => {
         expect(name).to.equal('movieSearch');
       })
   ).timeout(6500);
 
   it('should have a submit button', () =>
-    nightmare
-      .goto(url)
+      pageObject
       .wait()
       .evaluate(() => document.querySelector('button').type)
-      .end()
-      .then((type) => {
+      .then(type => {
         expect(type).to.equal('submit');
       })
   ).timeout(6500);
 
   it('button name should be findMovie', () =>
-    nightmare
-      .goto(url)
+      pageObject
       .wait()
       .evaluate(() => document.querySelector('button').name)
-      .end()
-      .then((name) => {
+      .then(name => {
         expect(name).to.equal('findMovie');
       })
   ).timeout(6500);
