@@ -94,6 +94,12 @@ describe('express', async function() {
     expect(movieArray.data).to.be.an('array');
   })
 
+  it('returned array should have 10 objects representing 10 movies', async () => {
+    const movie = 'Top Gun';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data).to.have.lengthOf(10);
+  })
+
   it('returned objects should have required key/value pairs', async () => {
     const movie = 'Top Gun';
     const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
