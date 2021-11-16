@@ -4,6 +4,7 @@ import { Link }  from 'react-router-dom';
 export default class Movies extends React.Component {
   render() {
     const { Title, Poster, Year, Plot, imdbID, Runtime, Rated} = this.props.movieData;
+    const index = this.props.index;
     return (
       <div className='card my-3'>
         <div className='row'>
@@ -11,7 +12,7 @@ export default class Movies extends React.Component {
             <img src={ Poster }></img>
           </div>
           <div className="container" style={{width: '350px'}}>
-            <h1 className='display-6 text-center playFont'>{ Title }</h1>
+            <h1 id={`movieTitle${index}`} className='display-6 text-center playFont'>{ Title }</h1>
             <div className='row'>
               <div className='col text-center font-weight-bold playFont lightSeaGreen'>Released</div>
               <div className='col text-center font-weight-bold playFont lightSeaGreen'>Duration</div>

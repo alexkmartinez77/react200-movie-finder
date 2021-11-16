@@ -15,8 +15,8 @@ app.listen(8888);
 
 const url = 'http://localhost:8888';
 
-
-describe('express', () => {
+describe('express', function() {
+  this.timeout(30000);
   beforeEach(() => {
     nightmare = new Nightmare();
   });
@@ -24,13 +24,44 @@ describe('express', () => {
   it('should have the correct page title', () =>
     nightmare
       .goto(url)
-      .evaluate(() => document.querySelector('body').innerText)
+      .evaluate(() => document.querySelector('title').innerText)
       .end()
       .then((text) => {
-        expect(text).to.equal('Hello World');
+        expect(text).to.equal('Movie Finder');
+      })
+  );
+
+  it('should have an movieSearch input', () =>
+    nightmare
+      .goto(url)
+      .evaluate(() => document.querySelector('input').name)
+      .end()
+      .then((name) => {
+        expect(name).to.equal('movieSearch');
+      })
+  );
+
+  it('should have a submit button', () =>
+    nightmare
+      .goto(url)
+      .evaluate(() => document.querySelector('button').type)
+      .end()
+      .then((type) => {
+        expect(type).to.equal('submit');
+      })
+  );
+
+  it('button name should be findMovie', () =>
+    nightmare
+      .goto(url)
+      .evaluate(() => document.querySelector('button').name)
+      .end()
+      .then((name) => {
+        expect(name).to.equal('findMovie');
       })
   );
 
   it('returns the correct status code', () => axios.get(url)
     .then(response => expect(response.status === 200)));
+    
 });
