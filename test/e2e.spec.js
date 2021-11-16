@@ -124,7 +124,7 @@ describe('express', function() {
       .then(text => {
         expect(text).to.equal('Movie Finder');
       })
-  ).timeout(6500);
+  ).timeout(30000);
 
   it('should have an movieSearch input', () =>
       pageObject
@@ -133,7 +133,7 @@ describe('express', function() {
       .then(name => {
         expect(name).to.equal('movieSearch');
       })
-  ).timeout(6500);
+  ).timeout(30000);
 
   it('should have a submit button', () =>
       pageObject
@@ -142,7 +142,7 @@ describe('express', function() {
       .then(type => {
         expect(type).to.equal('submit');
       })
-  ).timeout(6500);
+  ).timeout(30000);
 
   it('button name should be findMovie', () =>
       pageObject
@@ -151,5 +151,5 @@ describe('express', function() {
       .then(name => {
         expect(name).to.equal('findMovie');
       })
-  ).timeout(6500);
+  ).timeout(30000);
 });
