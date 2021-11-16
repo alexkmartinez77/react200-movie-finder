@@ -94,6 +94,18 @@ describe('express', async function() {
     expect(movieArray.data).to.be.an('array');
   })
 
+  it('returned objects should have required key/value pairs', async () => {
+    const movie = 'Top Gun';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data[0]).to.have.property('Title');
+    expect(movieArray.data[0]).to.have.property('Poster');
+    expect(movieArray.data[0]).to.have.property('Year');
+    expect(movieArray.data[0]).to.have.property('Plot');
+    expect(movieArray.data[0]).to.have.property('imdbID');
+    expect(movieArray.data[0]).to.have.property('Runtime');
+    expect(movieArray.data[0]).to.have.property('Rated');
+  })
+
   it('"Top Gun" search returns results with titles including Top Gun', async () => {
     const movie = 'Top Gun';
     const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
