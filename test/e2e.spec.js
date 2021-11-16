@@ -7,7 +7,6 @@ const axios = require('axios');
 import 'regenerator-runtime/runtime'
 require('dotenv').config();
 
-
 let nightmare;
 
 const app = express();
@@ -112,40 +111,44 @@ describe('express', function() {
   it('should have the correct page title', () =>
     nightmare
       .goto(url)
+      .wait()
       .evaluate(() => document.querySelector('title').innerText)
       .end()
       .then((text) => {
         expect(text).to.equal('Movie Finder');
       })
-  );
+  ).timeout(6500);
 
   it('should have an movieSearch input', () =>
     nightmare
       .goto(url)
+      .wait()
       .evaluate(() => document.querySelector('input').name)
       .end()
       .then((name) => {
         expect(name).to.equal('movieSearch');
       })
-  );
+  ).timeout(6500);
 
   it('should have a submit button', () =>
     nightmare
       .goto(url)
+      .wait()
       .evaluate(() => document.querySelector('button').type)
       .end()
       .then((type) => {
         expect(type).to.equal('submit');
       })
-  );
+  ).timeout(6500);
 
   it('button name should be findMovie', () =>
     nightmare
       .goto(url)
+      .wait()
       .evaluate(() => document.querySelector('button').name)
       .end()
       .then((name) => {
         expect(name).to.equal('findMovie');
       })
-  );
+  ).timeout(6500);
 });
