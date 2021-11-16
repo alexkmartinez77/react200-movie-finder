@@ -3,9 +3,7 @@ const path = require('path');
 module.exports = {
   context: path.join(__dirname, '/src'),
 
-  entry: {
-    javascript: './js/index'
-  },
+  entry: ["regenerator-runtime/runtime.js", "./js/index"],
 
   output: {
     filename: 'bundle.js',

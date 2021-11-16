@@ -4,6 +4,9 @@ const path = require('path');
 const Nightmare = require('nightmare');
 const expect = require('chai').expect;
 const axios = require('axios');
+import 'regenerator-runtime/runtime'
+require('dotenv').config();
+
 
 let nightmare;
 
@@ -15,8 +18,29 @@ app.listen(8888);
 
 const url = 'http://localhost:8888';
 
-describe('express', function() {
+app.get('/movieInfo/:inputValue', async(req, res) => {
+  axios({
+    url: `http://omdbapi.com/?s=${req.params.inputValue}&apikey=${process.env.OMDB_API_KEY}`,
+    method: 'get'
+  })
+  .then((response) => {
+    let moviesArray = response.data.Search
+    const movies = Promise.all(moviesArray.map( async movie => {
+      const movieData = await axios({
+          url: `http://omdbapi.com/?i=${movie.imdbID}&apikey=${process.env.OMDB_API_KEY}`,
+          method: 'get'
+        })
+      return movieData.data;
+    }))
+    return movies;
+    })
+  .then(response => res.send(response));
+});
+////////////////////////////////////////////// TESTS //////////////////////////////////////////////
+describe('express', async function() {
+
   this.timeout(30000);
+
   beforeEach(() => {
     nightmare = new Nightmare();
   });
@@ -62,6 +86,12 @@ describe('express', function() {
   );
 
   it('returns the correct status code', () => axios.get(url)
-    .then(response => expect(response.status === 200)));
-    
+  .then(response => expect(response.status === 200)));
+
+  it('call to proxy server /movieInfo/:inputValue returns an array', async () => {
+    const movie = 'Top Gun';
+    const movieArray = await axios.get(`http://localhost:8888/movieInfo/${movie}`);
+    expect(movieArray.data).to.be.an('array');
+  })
+
 });
