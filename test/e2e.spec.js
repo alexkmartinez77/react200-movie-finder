@@ -90,8 +90,20 @@ describe('express', async function() {
 
   it('call to proxy server /movieInfo/:inputValue returns an array', async () => {
     const movie = 'Top Gun';
-    const movieArray = await axios.get(`http://localhost:8888/movieInfo/${movie}`);
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
     expect(movieArray.data).to.be.an('array');
+  })
+
+  it('"Top Gun" search returns results with titles including Top Gun', async () => {
+    const movie = 'Top Gun';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data[0].Title).to.include('Top Gun');
+  })
+
+  it('"Harry Potter" search returns results with titles including Top Gun', async () => {
+    const movie = 'Harry Potter';
+    const movieArray = await axios.get(`${url}/movieInfo/${movie}`);
+    expect(movieArray.data[0].Title).to.include('Harry Potter');
   })
 
 });
