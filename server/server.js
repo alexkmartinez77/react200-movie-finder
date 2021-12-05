@@ -26,7 +26,10 @@ app.get('/movieInfo/:inputValue', async(req, res) => {
       }))
       return movies;
       })
-    .then(response => res.send(response));
+    .then(response => res.send(response))
+    .catch(error => {
+      console.log(error.response)
+    });
     });
 
 app.get('/movie/:id', (req, res) => {
@@ -36,6 +39,9 @@ app.get('/movie/:id', (req, res) => {
     })
     .then((response) => {
         res.send(response.data);
+    })
+    .catch(error => {
+      console.log(error.response)
     });
 });
 
